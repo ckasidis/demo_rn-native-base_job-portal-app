@@ -165,7 +165,7 @@ const DiscoverScreen: React.FC<DiscoverScreenProps> = ({}) => {
               />
               <Stack flex={1} pl={3}>
                 <Text>{item.company}</Text>
-                <Text fontSize={'xs'}>{item.postedDate}</Text>
+                <Text fontSize={'xs'}>Posted {item.postedDate}</Text>
               </Stack>
               <Stack pr={2}>
                 <Text color={'pink.500'} fontSize={'md'} fontWeight={'bold'}>
