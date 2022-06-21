@@ -1,10 +1,17 @@
 /* eslint-disable */
 
-import Icon from 'react-native-vector-icons/Ionicons';
-Icon.loadFont();
+import Ionicons from 'react-native-vector-icons/Ionicons';
+Ionicons.loadFont();
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
-import {NativeBaseProvider} from 'native-base';
+import {
+  Icon,
+  IconButton,
+  NativeBaseProvider,
+  StatusBar,
+  Text,
+  theme,
+} from 'native-base';
 import React from 'react';
 import ChatsScreen from './screens/ChatsScreen';
 import DiscoverScreen from './screens/DiscoverScreen';
@@ -19,16 +26,44 @@ const App: React.FC<AppProps> = ({}) => {
   return (
     <NativeBaseProvider>
       <NavigationContainer>
-        <Tab.Navigator>
+        <Tab.Navigator
+          screenOptions={({route}) => ({
+            headerRight: () => (
+              <IconButton
+                onPress={() => {}}
+                size={'lg'}
+                _icon={{
+                  as: Ionicons,
+                  name: 'notifications',
+                  color: 'white',
+                }}
+                mr={2}
+              />
+            ),
+            headerTitle: route.name.toUpperCase(),
+            headerStyle: {
+              backgroundColor: theme.colors.blue[900],
+              borderBottomColor: theme.colors.pink[500],
+              borderBottomWidth: 2,
+            },
+            headerTintColor: theme.colors.white,
+            tabBarStyle: {
+              paddingTop: 8,
+              borderTopWidth: 0.5,
+            },
+            tabBarActiveTintColor: theme.colors.pink[500],
+            tabBarInactiveTintColor: 'black',
+          })}>
           <Tab.Screen
             name="Home"
             component={HomeScreen}
             options={{
-              tabBarIcon: ({}) => (
+              tabBarIcon: ({focused}) => (
                 <Icon
+                  as={Ionicons}
                   name="home-outline"
-                  size={24}
-                  // color={focused ? '' : 'black'}
+                  size={'lg'}
+                  color={focused ? 'pink.500' : 'black'}
                 />
               ),
             }}
@@ -37,28 +72,56 @@ const App: React.FC<AppProps> = ({}) => {
             name="Discover"
             component={DiscoverScreen}
             options={{
-              tabBarIcon: () => <Icon name="compass-outline" size={24} />,
+              tabBarIcon: ({focused}) => (
+                <Icon
+                  as={Ionicons}
+                  name="compass-outline"
+                  size={'lg'}
+                  color={focused ? 'pink.500' : 'black'}
+                />
+              ),
             }}
           />
           <Tab.Screen
             name="Chats"
             component={ChatsScreen}
             options={{
-              tabBarIcon: () => <Icon name="chatbubbles-outline" size={24} />,
+              tabBarIcon: ({focused}) => (
+                <Icon
+                  as={Ionicons}
+                  name="chatbubbles-outline"
+                  size={'lg'}
+                  color={focused ? 'pink.500' : 'black'}
+                />
+              ),
             }}
           />
           <Tab.Screen
             name="My Jobs"
             component={MyJobsScreen}
             options={{
-              tabBarIcon: () => <Icon name="clipboard-outline" size={24} />,
+              tabBarIcon: ({focused}) => (
+                <Icon
+                  as={Ionicons}
+                  name="clipboard-outline"
+                  size={'lg'}
+                  color={focused ? 'pink.500' : 'black'}
+                />
+              ),
             }}
           />
           <Tab.Screen
             name="Profile"
             component={ProfileScreen}
             options={{
-              tabBarIcon: () => <Icon name="person-outline" size={24} />,
+              tabBarIcon: ({focused}) => (
+                <Icon
+                  as={Ionicons}
+                  name="person-outline"
+                  size={'lg'}
+                  color={focused ? 'pink.500' : 'black'}
+                />
+              ),
             }}
           />
         </Tab.Navigator>
