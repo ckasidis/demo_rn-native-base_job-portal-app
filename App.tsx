@@ -1,17 +1,16 @@
 /* eslint-disable */
 
+import Icon from 'react-native-vector-icons/Ionicons';
+Icon.loadFont();
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
 import {NativeBaseProvider} from 'native-base';
-import Icon from 'react-native-vector-icons/Ionicons';
 import React from 'react';
 import ChatsScreen from './screens/ChatsScreen';
-import DiscoverScreen from './screens/DiscoverScreen copy 3';
+import DiscoverScreen from './screens/DiscoverScreen';
 import HomeScreen from './screens/HomeScreen';
 import MyJobsScreen from './screens/MyJobsScreen';
 import ProfileScreen from './screens/ProfileScreen';
-
-Icon.loadFont();
 
 const Tab = createBottomTabNavigator();
 interface AppProps {}
